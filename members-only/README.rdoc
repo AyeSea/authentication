@@ -1,28 +1,8 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Repository for "Project: Authentication" from The Odin Project
 
-Things you may want to cover:
+Members Only Clubhouse:
+Create a microblog using Rails where members can write short posts about non-members. Only logged in members can verify the authors of the posts, while the rest of the public is left guessing.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Visit http://www.theodinproject.com/ruby-on-rails/authentication?ref=lc-pb for more information on this particular project.
