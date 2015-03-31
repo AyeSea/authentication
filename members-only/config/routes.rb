@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
+  root                'static_pages#home'
 
   get    'signin'  => 'sessions#new'
   post   'signin'  => 'sessions#create'

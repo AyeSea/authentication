@@ -1,0 +1,9 @@
+<h1>Members Only Clubhouse</h1>
+
+<% if signed_in? %>
+	<h2>Welcome <%= current_user.username %>!</h2>
+<% else %>
+	<h2>Welcome!</h2>
+<% end %>
+
+<p>More content to come...</p>

@@ -13,4 +13,10 @@ class SessionsController < ApplicationController
   		render 'new'
   	end
   end
+
+  def destroy
+    sign_out if signed_in?
+    flash[:success] = 'Logged Out! Until next time...'
+    redirect_to root_path
+  end
 end

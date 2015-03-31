@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	attr_accessor :remember_token
+	
 	before_save { self.email = email.downcase }
 	before_create :save_token
 
@@ -9,16 +11,17 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 	validates :password, length: { in: 8..30 }
-	
-	def save_token(token)
-		self.remember_token = User.digest(token)
-	end
 
 	def User.digest(token)
-		Digest::SHA1.hexdigest(token)
+		Digest::SHA1.hexdigest(token.to_s)
 	end
 
-	def User.create_token
+	def User.new_token
 		SecureRandom.urlsafe_base64
 	end
+
+	private
+		def save_token
+			self.remember_token = User.digest(User.new_token)
+		end
 end
