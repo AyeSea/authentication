@@ -1,0 +1,5 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<% @user = User.find(params[:id]) %>
+<p>This is the show page for <%= @user.username %>.</p>
+<p>Token: <%= @user.remember_token %>
