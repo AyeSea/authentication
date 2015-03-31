@@ -1,1 +1,14 @@
 <h1>All Posts:</h1>
+<% @posts.each do |post| %>
+	<ul>
+		<li>
+			<%= post.body %>
+		</li>
+		
+		<li>
+			<% if signed_in? %>
+				Written By: <%= post.user.username %>
+			<% end %>
+		</li>
+	</ul>
+<% end %>
