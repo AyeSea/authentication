@@ -4,13 +4,26 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def sign_in(user)
-  	remember_token = User.create_token
-  	cookes.permanent[:remember_token] = remember_token
-  	#Update methods in User model before uncommenting below:
-  	#user.remember_token = User.encrypt_token(remember_token)
-		
-		#Set current user equal to user (needs current user helper)
+  	new_remember_token = User.create_token
+  	cookies.permanent[:remember_token] = new_remember_token
+    user.update_attribute(:remember_token, User.digest(new_remember_token))
+    current_user = user
 	end
 
+  def current_user
+    #if user w/ given remember token exists:
+    if User.find_by(:remember_token, User.digest(cookies[:remember_token]))
+      @current_user ||= User.find_by(:remember_token, User.digest(cookies[:remember_token]))
+    else
+      nil
+    end
+  end
 
+  def current_user=(user)
+    @current_user = user
+  end
+
+  def signed_in?
+    !current_user.nil?
+  end
 end

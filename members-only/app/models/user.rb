@@ -10,12 +10,12 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, length: { in: 8..30 }
 	
-	def save_token
-		self.remember_token = User.encrypt_token
+	def save_token(token)
+		self.remember_token = User.digest(token)
 	end
 
-	def User.encrypt_token
-		Digest::SHA1.hexdigest(User.create_token)
+	def User.digest(token)
+		Digest::SHA1.hexdigest(token)
 	end
 
 	def User.create_token
