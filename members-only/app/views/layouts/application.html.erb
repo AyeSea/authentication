@@ -10,8 +10,9 @@
 <% flash.each do |message_type, message| %>
 	<%= message %>
 <% end %>
-
 <%= link_to "Home", root_path %>
+<%= link_to "All Posts", posts_path %>
+<%= link_to "Write New Post", new_post_path %>
 
 <% if signed_in? %>
 	<%= link_to "Profile", current_user %>
